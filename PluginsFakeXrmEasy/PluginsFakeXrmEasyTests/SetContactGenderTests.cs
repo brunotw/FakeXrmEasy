@@ -3,8 +3,6 @@ using FakeXrmEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using PluginsFakeXrmEasy;
-using System;
-using System.Collections.Generic;
 
 namespace PluginsFakeXrmEasyTests
 {

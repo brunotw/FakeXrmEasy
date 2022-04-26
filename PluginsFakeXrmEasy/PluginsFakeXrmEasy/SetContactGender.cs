@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xrm.Sdk;
+using PluginsFakeXrmEasy.Model;
 using System;
-using System.IO;
-using System.Net.Http;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 
-namespace PluginsFakeXrmEasy
+namespace PluginsFakeXrmEasy.Interfaces
 {
     public class SetContactGender : IPlugin
     {
@@ -19,7 +16,7 @@ namespace PluginsFakeXrmEasy
 
         public SetContactGender()
         {
-            GenderAPI = new GenderAPI();
+            GenderAPI = new GuessGenderAPIService();
         }
 
         public SetContactGender(IGuessGenderAPI genderAPI)
@@ -40,58 +37,10 @@ namespace PluginsFakeXrmEasy
                     return;
 
                 var json = GenderAPI.GuessGenderBasedOnName(firstName);
+                GenderModel response = Helper.Deserialize<GenderModel>(json);
 
-                GenderModel response = Deserialize<GenderModel>(json);
-                contact.Attributes["gendercode"] = response.Gender.Equals("male", StringComparison.OrdinalIgnoreCase) ? (int)EGender.Male : (int)EGender.Male;
-            }
-        }
-
-        public static T Deserialize<T>(string body)
-        {
-            using (var stream = new MemoryStream())
-            using (var writer = new StreamWriter(stream))
-            {
-                writer.Write(body);
-                writer.Flush();
-                stream.Position = 0;
-                return (T)new DataContractJsonSerializer(typeof(T)).ReadObject(stream);
+                contact.Attributes["gendercode"] = response.Gender.Equals("male", StringComparison.OrdinalIgnoreCase) ? (int)EGender.Male : (int)EGender.Female;
             }
         }
     }
-
-
-    public interface IGuessGenderAPI
-    {
-        string GuessGenderBasedOnName(string name);
-    }
-
-    public class GenderAPI : IGuessGenderAPI
-    {
-        public string GuessGenderBasedOnName(string name)
-        {
-            using (var client = new HttpClient())
-            {
-                var url = string.Format("https://api.genderize.io?name={0}", name);
-                var result = client.GetStringAsync(url).Result;
-                return result;
-            }
-        }
-    }
-
-    [DataContract]
-    public class GenderModel
-    {
-        [DataMember(Name = "name")]
-        public string Name { get; set; }
-
-        [DataMember(Name = "gender")]
-        public string Gender { get; set; }
-
-        [DataMember(Name = "probability")]
-        public double Probability { get; set; }
-
-        [DataMember(Name = "count")]
-        public int Count { get; set; }
-    }
-
 }

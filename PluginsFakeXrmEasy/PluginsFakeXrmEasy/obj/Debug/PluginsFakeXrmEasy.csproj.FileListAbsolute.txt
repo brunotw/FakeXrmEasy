@@ -55,8 +55,8 @@ C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\bin\Debu
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\bin\Debug\System.Text.Json.xml
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\bin\Debug\System.ValueTuple.xml
-C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\obj\Debug\PluginsFakeXrmEasy.csproj.AssemblyReference.cache
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\obj\Debug\PluginsFakeXrmEasy.csproj.CoreCompileInputs.cache
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\obj\Debug\PluginsFakeXrmEasy.csproj.CopyComplete
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\obj\Debug\PluginsFakeXrmEasy.dll
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\obj\Debug\PluginsFakeXrmEasy.pdb
+C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasy\obj\Debug\PluginsFakeXrmEasy.csproj.AssemblyReference.cache

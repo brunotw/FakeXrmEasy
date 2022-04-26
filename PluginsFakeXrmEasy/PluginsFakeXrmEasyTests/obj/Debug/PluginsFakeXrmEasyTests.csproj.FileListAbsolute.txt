@@ -78,3 +78,7 @@ C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\obj
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\obj\Debug\PluginsFakeXrmEasyTests.csproj.CopyComplete
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\obj\Debug\PluginsFakeXrmEasyTests.dll
 C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\obj\Debug\PluginsFakeXrmEasyTests.pdb
+C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Bruno\source\repos\Tests\PluginsFakeXrmEasy\PluginsFakeXrmEasyTests\bin\Debug\System.Threading.Tasks.Extensions.xml

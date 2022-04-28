@@ -7,6 +7,7 @@ namespace PluginsFakeXrmEasy.Interfaces
     public class SetContactGender : IPlugin
     {
         private static IGuessGenderAPI GenderAPI { get; set; }
+        private static double MinimumProbability { get; set; } = 0.80;
 
         public enum EGender
         {
@@ -39,7 +40,10 @@ namespace PluginsFakeXrmEasy.Interfaces
                 var json = GenderAPI.GuessGenderBasedOnName(firstName);
                 GenderModel response = Helper.Deserialize<GenderModel>(json);
 
-                contact.Attributes["gendercode"] = response.Gender.Equals("male", StringComparison.OrdinalIgnoreCase) ? (int)EGender.Male : (int)EGender.Female;
+                if (response.Probability >= MinimumProbability)
+                {
+                    contact.Attributes["gendercode"] = response.Gender.Equals("male", StringComparison.OrdinalIgnoreCase) ? (int)EGender.Male : (int)EGender.Female;
+                }
             }
         }
     }

@@ -23,14 +23,14 @@ namespace PluginsFakeXrmEasyTests
         }
 
         [TestMethod]
-        public void ShouldReturnMale()
+        public void ShouldReturnMale_FakingAPICall()
         {
             //Arrange
-            A.CallTo(() => FakeGenderAPI.GuessGenderBasedOnName("Bruno")).Returns("{\"name\":\"Bruno\",\"gender\":\"Male\",\"probability\":0.99,\"count\":103169}");
+            A.CallTo(() => FakeGenderAPI.GuessGenderBasedOnName("Richard")).Returns("{\"name\":\"Richard\",\"gender\":\"Male\",\"probability\":0.99,\"count\":103169}");
 
             SetContactGender pluginInstance = new SetContactGender(FakeGenderAPI);
 
-            Target.Attributes["firstname"] = "Bruno";
+            Target.Attributes["firstname"] = "Richard";
             ExecutionContext.InputParameters.Add("Target", Target);
 
             //Act
@@ -41,10 +41,10 @@ namespace PluginsFakeXrmEasyTests
         }
 
         [TestMethod]
-        public void ShouldReturnFemale()
+        public void ShouldReturnFemale_NotFakingAPICall()
         {
             //Arrange
-            Target.Attributes["firstname"] = "Lilian";
+            Target.Attributes["firstname"] = "Rachel";
 
             //Act
             Context.ExecutePluginWithTarget<SetContactGender>(Target);
@@ -68,6 +68,24 @@ namespace PluginsFakeXrmEasyTests
 
             //Assert
             A.CallTo(() => FakeGenderAPI.GuessGenderBasedOnName(A<string>.Ignored)).MustNotHaveHappened();
+        }
+
+        [TestMethod]
+        public void ShouldNotPopulateGender_ProbabilityLowerThanMinimum()
+        {
+            //Arrange
+            A.CallTo(() => FakeGenderAPI.GuessGenderBasedOnName("Richard")).Returns("{\"name\":\"Richard\",\"gender\":\"Male\",\"probability\":0.79,\"count\":103169}");
+
+            SetContactGender pluginInstance = new SetContactGender(FakeGenderAPI);
+
+            Target.Attributes["firstname"] = "Richard";
+            ExecutionContext.InputParameters.Add("Target", Target);
+
+            //Act
+            Context.ExecutePluginWith(ExecutionContext, pluginInstance);
+
+            //Assert
+            Assert.IsFalse(Target.Contains("gendercode"));
         }
     }
 }
